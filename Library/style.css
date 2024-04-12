@@ -1,0 +1,388 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --black: #43291F;
+    --cornflower-lilac: #ffaea9;
+    --marron: #A1B5D8;
+    --white: #FFFCF7;
+    --your-pink: #738290;
+}    
+
+body {
+    font-size: 10px;
+    font-family: Roboto, sans-serif;
+    background-color: var(--marron);
+    margin: 0;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    color : var(--black);
+}
+
+body,
+button,
+input {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position:fixed;
+    top: 0px;
+    margin-right : 5rem;
+    background-color: var(--marron);
+    margin: 0;
+    z-index: 2;
+    border-bottom: #738290 solid 1px;
+    color: #FFFCF7;
+}
+
+.menu-connected {
+    
+}
+
+
+.menu li {
+    margin: 2rem;
+    font-size: 1.2rem;
+    list-style-type: none;
+    cursor: pointer;
+    
+
+}
+a {
+    text-decoration: none;
+    color: initial;
+}
+.status {
+    position:fixed;
+    bottom: 4rem;
+    left: 4rem;
+    width: 20rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.status img{
+    width: 1rem;
+    height: 10px;
+}
+
+.searchDiv{
+    margin-top : 5rem;
+}
+
+.index-image{
+
+    width: 19rem;
+    height: 18rem;
+}
+
+.c-checkbox {
+    display: none;
+
+    &:checked + .c-formContainer {
+        .c-form {
+            width: 37.5em;
+        }
+
+        .c-form__toggle {
+            visibility: hidden;
+            opacity: 0;
+            transform: scale(0.7);
+        }
+
+        .searchInput,
+        .searchButtonLabel {
+            transition: 0.2s 0.1s;
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    &:not(:checked),
+    &:checked {
+        + .c-formContainer .searchInput:required:valid ~ .c-form__toggle::before {
+            content: 'Thank You! \1F60A';
+        }
+    }
+
+    &:not(:checked) + .c-formContainer {
+        .searchInput:required:valid ~ .c-form__toggle {
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+}
+
+.c-formContainer,
+.c-form,
+.c-form__toggle {
+    width: 100%;
+    height: 6.25em;
+    color: var(--your-pink);
+}
+.c-formContainer {
+    position: relative;
+    font-weight: 700;
+}
+
+.c-form,
+.c-form__toggle {
+    position: absolute;
+    border-radius: 6.25em;
+    background-color: var(--white);
+    transition: 0.2s;
+}
+
+.c-form {
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.625em;
+    box-sizing: border-box;
+    box-shadow: 0 0.125em 0.3125em rgba(var(--black), 0.3);
+
+    display: flex;
+    justify-content: center;
+}
+
+.c-form__toggle {
+    color: var(--marron);
+    top: 0;
+    cursor: pointer;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        font-size: 1.75em;
+        content: attr(data-title);
+    }
+}
+
+.searchInput,
+.searchButton {
+    font: inherit;
+    border: 0;
+    outline: 0;
+    border-radius: 5em;
+    box-sizing: border-box;
+    font-size: larger;
+}
+
+.searchInput,
+.searchButtonLabel {
+    font-size: 1.75em;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.7);
+    transition: 0s;
+}
+
+.searchInput {
+    color: var(--your-pink);
+    height: 100%;
+    width: 100%;
+    padding: 0 0.714em;
+
+    &::placeholder {
+        color: currentColor;
+    }
+
+    &:required:valid {
+        color: var(--marron);
+
+        + .searchButtonLabel {
+            color: var(--white);
+
+            &::before {
+                pointer-events: initial;
+            }
+        }
+    }
+}
+.searchButton {
+    color: var(--white);
+    padding: 0;
+    height: 100%;
+    width: 5em;
+    background-color: var(--marron);
+    cursor: pointer;
+}
+
+.searchButton::hover{
+    color: red;    
+}
+
+.container {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 5rem;
+    grid-gap: 2rem;
+}
+
+.error-vide {
+    position: absolute;
+    top:70%;
+    left: 43%;
+    font-size: 1.5rem;
+}
+
+.div-book{
+    background-color: aliceblue;
+    width: 22vw;
+    height: 23rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+
+.name-book{
+    display: none;
+    background-color: red;
+    color: red;
+}
+.author-book{
+    /* display: none; */
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+
+}
+.date-book{
+    display: none;
+
+}
+.genre-book{
+    display: none;
+
+}
+.image-book{
+    cursor:pointer;
+    /* width: 80%;
+    height: 80%; */
+    border-radius: 20px;
+    height: 210px;
+    width: 160px;
+    border: solid black 1px;
+
+    margin:1rem;
+}
+
+
+
+
+/* CSS */
+.shop-btn {
+
+  height: 1.7rem;
+  width: 80%;
+  opacity: 0;
+  transition:cubic-bezier(1, 0, 0, 1) 0.5s; 
+  opacity: 0;
+  margin-top : auto;
+  margin-bottom: 1rem;
+}
+
+.shop-btn {
+    padding: 0.1em 0.25em;
+    width: 13em;
+    height: 4.2em;
+    background-color: var(--marron);
+    border: 0.08em solid #fff;
+    border-radius: 0.3em;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .shop-btn span {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0.4em;
+    width: 8.25em;
+    height: 2.5em;
+    background-color: var(--marron);
+
+    border-radius: 0.2em;
+    font-size: 1.5em;
+    color: #fff;
+    border: 0.08em solid #fff;
+    box-shadow: 0 0.4em 0.1em 0.019em #fff;
+  }
+  
+  .shop-btn span:hover {
+    transition: all 0.5s;
+    transform: translate(0, 0.4em);
+    box-shadow: 0 0 0 0 #fff;
+  }
+  
+  .shop-btn span:not(hover) {
+    transition: all 1s;
+  }
+
+  .favoris{
+    margin-top: 8rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    height: 50vh;
+    width: 70vw;
+    
+  }
+
+  
+.fav-book{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-left: solid black 2px;
+    
+}
+
+.fav-book img {
+    height: 90%;
+    border-radius: 1rem;
+}
+
+.desc-fav-book{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.fav-book{
+    margin-top: auto;   
+    opacity: 1;
+}
+
+.author-fav-book{
+    font-style: italic;
+}
+
